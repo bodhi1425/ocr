@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#edece8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Image to Text (OCR) — Extract Text from Images, 100% Local, No Upload | bodhi.tools</title>
+  <meta name="description" content="Free online OCR: extract text from images and screenshots into editable text — Chinese + English. 100% in your browser, images never uploaded, copy or download as TXT. No signup." />
+  <meta name="keywords" content="image to text, ocr online, extract text from image, screenshot to text, picture to text, free ocr, ocr without upload, text recognition, image text extractor" />
+  <link rel="canonical" href="https://ocr.bodhi.tools/en/" />
+  <link rel="alternate" hreflang="en" href="https://ocr.bodhi.tools/en/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://ocr.bodhi.tools/" />
+  <link rel="alternate" hreflang="x-default" href="https://ocr.bodhi.tools/en/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Image to Text (OCR) — Extract Text from Images, 100% Local" />
+  <meta property="og:description" content="Extract text from images/screenshots into editable text, locally in your browser. Images never uploaded. Copy or download TXT." />
+  <meta property="og:url" content="https://ocr.bodhi.tools/en/" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image to Text (OCR)","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Extract text from images into editable text, Chinese + English, 100% in your browser, images never uploaded."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I extract text from an image for free?","acceptedAnswer":{"@type":"Answer","text":"Upload an image or screenshot, pick the language (Chinese+English / English / Chinese), and click Extract text. The OCR runs locally in your browser; the result is editable and you can copy it or download a TXT. Free, no signup."}},{"@type":"Question","name":"Are my images uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Recognition runs locally (Tesseract WebAssembly); images are never uploaded — good for screenshots with sensitive info."}},{"@type":"Question","name":"Does it support Chinese? Is it accurate?","acceptedAnswer":{"@type":"Answer","text":"Yes — Chinese + English. Clear printed text and documents are recognized accurately; blurry, artistic, complex-layout or handwritten text may have errors you can fix afterward."}},{"@type":"Question","name":"Why is the first run slow?","acceptedAnswer":{"@type":"Answer","text":"The first time, a language pack is downloaded (the Chinese pack is larger), then cached. Recognition runs locally; large images and long text are slower."}}]}</script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4338726b0b084af88125b1047cb29bdf"}'></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/en/" aria-label="Image to Text home">
+        <span class="seal-mark" aria-hidden="true"><span>文</span></span>
+        <span><b>Image to Text</b><span class="sub mono">OCR · BODHI.TOOLS</span></span>
+      </a>
+      <span class="trust" title="Everything runs locally on your device">
+        <span class="dot" aria-hidden="true"></span>
+        <span><span class="t-full">Images never uploaded · </span>100% local OCR</span>
+      </span>
+      <nav class="links" aria-label="Nav">
+        <a href="https://bodhi.tools/tools">More tools</a><a href="#how">How</a><a href="#faq">FAQ</a><a href="/" class="lang-switch">中文</a>
+      </nav>
+    </div>
+  </header>
+
+  <a href="https://bodhi.tools" class="home-fab" aria-label="Back to bodhi.tools">← bodhi.tools</a>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">OCR · On-device</span>
+          <h1>Image to text,<br><em>screenshots become editable</em></h1>
+          <p class="lead">Pull the text out of images, screenshots and scanned docs — Chinese + English — ready to edit, copy or download as TXT. Recognized entirely in your browser, images never uploaded. Free, no signup.</p>
+          <div class="badges">
+            <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 7.5 8 10 4.5-2.5 8-5 8-10V6l-8-4Z"/></svg>No upload</span>
+            <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14M5 10h14M5 15h9"/></svg>ZH + EN</span>
+            <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>1-click copy</span>
+            <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Unlimited</span>
+          </div>
+        </div>
+        <div class="seal" aria-hidden="true">
+          <div><div class="s-top">IMAGE →</div><div class="s-main">TXT</div><div class="s-bot">ON-DEVICE</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" id="tool">
+      <div class="ws-head">
+        <h2>Image / screenshot to text</h2>
+        <p>Upload an image and recognize the text locally. First run downloads a language pack (then cached); images never uploaded.</p>
+      </div>
+      <label class="dropzone" id="dropzone">
+        <span class="dz-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></span>
+        <div class="dz-title">Drop an image / screenshot, or click to choose</div>
+        <div class="dz-hint">JPG / PNG / WebP · clear printed text works best · never uploaded</div>
+        <input type="file" id="fileInput" accept="image/*" />
+      </label>
+      <div id="panel" hidden>
+        <div class="orig-meta" id="origMeta"></div>
+        <div class="options">
+          <div class="field">
+            <label>Language</label>
+            <div class="segmented" id="langSeg">
+              <button type="button" data-lang="chi_sim+eng" aria-pressed="true">ZH + EN</button>
+              <button type="button" data-lang="eng">English</button>
+              <button type="button" data-lang="chi_sim">Chinese</button>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="ocrBtn" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14M5 10h14M5 15h9"/></svg>Extract text
+          </button>
+        </div>
+        <div class="progress" id="progress"><i></i></div>
+        <div class="statusline" id="status" role="status" aria-live="polite"></div>
+        <div class="result" id="result"></div>
+      </div>
+      <p class="notice">Recognition runs locally; images never leave your browser. First run downloads a language pack (the Chinese pack is larger, then cached). Clear printed text works best; handwriting/artistic fonts may have errors.</p>
+    </section>
+
+    <aside class="ad" aria-label="Ad"><span class="ad-tag">广告位 · Ad Slot</span></aside>
+
+    <section class="block" id="how">
+      <span class="kicker">HOW IT WORKS</span>
+      <h2>Local OCR — screenshots never leave your device</h2>
+      <p class="lede">Stop retyping text off your screen. Common online OCR uploads your screenshots to a server — this tool uses the <strong>Tesseract</strong> engine right in your <strong>browser</strong>, ideal for screenshots with sensitive info, chat logs and documents.</p>
+      <div class="steps">
+        <div class="step"><h3>Upload image / screenshot</h3><p>Clear, high-contrast printed text works best. The image only enters this page.</p></div>
+        <div class="step"><h3>Recognize locally</h3><p>Pick a language (ZH+EN / EN / ZH); the engine runs in your browser, downloading a pack on first run.</p></div>
+        <div class="step"><h3>Copy / download</h3><p>The result is editable — copy it, or download as TXT.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <span class="kicker">FAQ</span>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details open><summary>How do I extract text from an image for free?</summary><div class="ans">Upload an image, pick a language, click Extract text. OCR runs locally; the result is editable, copyable or downloadable as TXT. Free, no signup.</div></details>
+        <details><summary>Are my images uploaded to a server?</summary><div class="ans">No. Recognition runs locally (Tesseract WebAssembly); images are never uploaded — good for sensitive screenshots.</div></details>
+        <details><summary>Does it support Chinese? Is it accurate?</summary><div class="ans">Yes — Chinese + English. Clear printed text is accurate; blurry, artistic or handwritten text may have errors you can fix afterward.</div></details>
+        <details><summary>Why is the first run slow?</summary><div class="ans">A language pack downloads the first time (the Chinese pack is larger), then caches. Recognition runs locally; large/long text is slower.</div></details>
+      </div>
+    </section>
+
+    <aside class="ad" aria-label="Ad"><span class="ad-tag">广告位 · Ad Slot</span></aside>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="f-brand">
+        <b>Image to Text · bodhi.tools</b>
+        <p>A privacy-first free OCR tool — all recognition runs locally in your browser.</p>
+      </div>
+      <nav aria-label="Related">
+        <a href="https://bodhi.tools/tools">All tools</a>
+        <a href="https://cutout.bodhi.tools">Cutout</a>
+        <a href="https://compress.bodhi.tools">Image compress</a>
+      </nav>
+      <div class="copy mono">© <span id="year"></span> bodhi.tools · No image leaves your device.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

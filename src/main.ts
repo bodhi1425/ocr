@@ -2,6 +2,34 @@ import './style.css';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector(s) as T;
 
+const L = (document.documentElement.lang || 'zh').toLowerCase().startsWith('en') ? 'en' : 'zh';
+const T = {
+  zh: {
+    pickImg: '请选择图片(JPG / PNG / WebP)',
+    ready: '选语言后点「提取文字」(首次需下载语言包)',
+    loadingEngine: '正在加载 OCR 引擎(首次较慢)…',
+    recognizing: (p: number) => `识别中 ${p}%…`,
+    loadingLang: '加载语言包 / 初始化…',
+    done: '识别完成',
+    noText: '未识别到文字,换张更清晰的图试试',
+    fail: '识别失败,请重试',
+    placeholder: '(未识别到文字)',
+    copyAll: '复制全部', copied: '已复制 ✓', dlTxt: '下载 TXT',
+  },
+  en: {
+    pickImg: 'Please choose an image (JPG / PNG / WebP)',
+    ready: 'Pick a language, then click "Extract text" (a language pack downloads on first run)',
+    loadingEngine: 'Loading the OCR engine (slower on first run)…',
+    recognizing: (p: number) => `Recognizing ${p}%…`,
+    loadingLang: 'Loading language pack / initializing…',
+    done: 'Done',
+    noText: 'No text found — try a clearer image',
+    fail: 'Recognition failed, please retry',
+    placeholder: '(no text found)',
+    copyAll: 'Copy all', copied: 'Copied ✓', dlTxt: 'Download TXT',
+  },
+}[L];
+
 const fileInput = $<HTMLInputElement>('#fileInput');
 const dropzone = $('#dropzone');
 const panel = $('#panel');
@@ -35,7 +63,7 @@ function setProgress(r: number | null) {
 }
 
 function loadFile(f: File) {
-  if (!f.type.startsWith('image/')) { setStatus('请选择图片(JPG / PNG / WebP)', 'err'); return; }
+  if (!f.type.startsWith('image/')) { setStatus(T.pickImg, 'err'); return; }
   file = f;
   const url = URL.createObjectURL(f);
   const img = new Image();
@@ -51,7 +79,7 @@ function loadFile(f: File) {
   resultEl.classList.remove('show');
   resultEl.innerHTML = '';
   setProgress(null);
-  setStatus('选语言后点「提取文字」(首次需下载语言包)');
+  setStatus(T.ready);
 }
 
 fileInput.addEventListener('change', () => {
@@ -82,12 +110,11 @@ langSeg.querySelectorAll('button').forEach((b) => {
   });
 });
 
-// ---------- OCR(懒加载 tesseract.js) ----------
 ocrBtn.addEventListener('click', async () => {
   if (!file) return;
   ocrBtn.disabled = true;
   resultEl.classList.remove('show');
-  setStatus('正在加载 OCR 引擎(首次较慢)…');
+  setStatus(T.loadingEngine);
   setProgress(0.02);
   try {
     const Tesseract = (await import('tesseract.js')).default;
@@ -95,19 +122,19 @@ ocrBtn.addEventListener('click', async () => {
       logger: (m: { status: string; progress: number }) => {
         if (m.status === 'recognizing text') {
           setProgress(m.progress);
-          setStatus(`识别中 ${Math.round(m.progress * 100)}%…`);
+          setStatus(T.recognizing(Math.round(m.progress * 100)));
         } else {
-          setStatus('加载语言包 / 初始化…');
+          setStatus(T.loadingLang);
         }
       },
     });
     setProgress(null);
     const text = (data.text || '').trim();
-    setStatus(text ? '识别完成' : '未识别到文字,换张更清晰的图试试', text ? 'ok' : 'err');
+    setStatus(text ? T.done : T.noText, text ? 'ok' : 'err');
     renderResult(text);
   } catch (e) {
     setProgress(null);
-    setStatus((e as Error).message || '识别失败,请重试', 'err');
+    setStatus((e as Error).message || T.fail, 'err');
   } finally {
     ocrBtn.disabled = false;
   }
@@ -116,19 +143,19 @@ ocrBtn.addEventListener('click', async () => {
 function renderResult(text: string) {
   resultEl.innerHTML =
     `<div class="ocr-out">` +
-    `<textarea class="text-out" spellcheck="false" placeholder="(未识别到文字)"></textarea>` +
-    `<div class="text-toolbar"><button class="btn btn-ghost" id="copyBtn">复制全部</button>` +
-    `<button class="btn btn-primary" id="dlBtn">下载 TXT</button></div></div>`;
+    `<textarea class="text-out" spellcheck="false" placeholder="${T.placeholder}"></textarea>` +
+    `<div class="text-toolbar"><button class="btn btn-ghost" id="copyBtn">${T.copyAll}</button>` +
+    `<button class="btn btn-primary" id="dlBtn">${T.dlTxt}</button></div></div>`;
   const ta = resultEl.querySelector('textarea') as HTMLTextAreaElement;
-  ta.value = text; // 安全赋值,避免 innerHTML 注入
+  ta.value = text;
   resultEl.classList.add('show');
 
   const copyBtn = resultEl.querySelector('#copyBtn') as HTMLButtonElement;
   copyBtn.onclick = async () => {
     try {
       await navigator.clipboard.writeText(ta.value);
-      copyBtn.textContent = '已复制 ✓';
-      setTimeout(() => (copyBtn.textContent = '复制全部'), 1500);
+      copyBtn.textContent = T.copied;
+      setTimeout(() => (copyBtn.textContent = T.copyAll), 1500);
     } catch { ta.select(); }
   };
   (resultEl.querySelector('#dlBtn') as HTMLButtonElement).onclick = () => {
